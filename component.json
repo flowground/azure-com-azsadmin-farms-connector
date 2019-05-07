@@ -1,0 +1,186 @@
+{
+    "title": "StorageManagementClient",
+    "description": "The Admin Storage Management Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/azsadmin-farms/2015-12-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://adminmanagement.local.azurestack.external/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Authorization uses an Azure Active Directory OAuth2 flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Farms_List": {
+            "main": "./lib/actions/Farms_List.js",
+            "title": "Returns a list of all storage farms.",
+            "description": "Returns a list of all storage farms.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_Get": {
+            "main": "./lib/actions/Farms_Get.js",
+            "title": "Returns the Storage properties and settings for a specified storage farm.",
+            "description": "Returns the Storage properties and settings for a specified storage farm.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_Update": {
+            "main": "./lib/actions/Farms_Update.js",
+            "title": "Update an existing storage farm.",
+            "description": "Update an existing storage farm.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_Create": {
+            "main": "./lib/actions/Farms_Create.js",
+            "title": "Create a new storage farm.",
+            "description": "Create a new storage farm.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_ListMetricDefinitions": {
+            "main": "./lib/actions/Farms_ListMetricDefinitions.js",
+            "title": "Returns a list of metric definitions for a storage farm.",
+            "description": "Returns a list of metric definitions for a storage farm.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_ListMetricDefinitions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_ListMetrics": {
+            "main": "./lib/actions/Farms_ListMetrics.js",
+            "title": "Returns a list of storage farm metrics.",
+            "description": "Returns a list of storage farm metrics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_ListMetrics.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_StartGarbageCollection": {
+            "main": "./lib/actions/Farms_StartGarbageCollection.js",
+            "title": "Start garbage collection on deleted storage objects.",
+            "description": "Start garbage collection on deleted storage objects.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_StartGarbageCollection.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Farms_GetGarbageCollectionState": {
+            "main": "./lib/actions/Farms_GetGarbageCollectionState.js",
+            "title": "Returns the state of the garbage collection job.",
+            "description": "Returns the state of the garbage collection job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Farms_GetGarbageCollectionState.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
